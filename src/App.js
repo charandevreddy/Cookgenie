@@ -162,19 +162,27 @@ const App = () => {
 
       <form className='my-2rem space-y-[1rem] shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-black' onSubmit={getsubmit}>
         <div>
-        <span>Search : </span><input className='dark:text-black rounded  py-2 px-3' type = "text" placeholder='search' value={search} onChange={research}/>
+          <span>Search : </span><input className='dark:text-black rounded  py-2 px-3' type = "text" placeholder='search' value={search} onChange={research}/>
         </div>
 
         <div className='my-1rem'>
           <span>Meal Type : </span><Select className='text-black' options={mealtypeoptions} onChange={mealtype} />
         </div>
-        
-        <Select className='text-black' options={dietoptions} onChange={diettype}/>
-        <Select className='text-black' options={dishtypeoptions} onChange={dishtype}/>
-        <Select className='text-black' options={cuisinetypeoptions} onChange={cuisinetype}/>
+
+        <div className='my-1rem'>
+          <span>Diet Type :</span><Select className='text-black' options={dietoptions} onChange={diettype}/>
+        </div>
+
+        <div className='my-1rem'>
+          <span>Dish Type : </span><Select className='text-black' options={dishtypeoptions} onChange={dishtype}/>
+        </div>
+
+        <div className='my-1rem'>
+          <span>Cuisine Type : </span><Select className='text-black' options={cuisinetypeoptions} onChange={cuisinetype}/>
+        </div>
 
         <button className='py-2 px-4 text-lg bg-teal-500 text-white rounded-lg font-medium ml-8' type='submit' >search</button>
-      </form>
+      </form> 
       {recipes.map(recipe => (
         <Recipe 
         key = {recipe.recipe.calories} 
