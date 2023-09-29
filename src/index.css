@@ -22,3 +22,8 @@ nav{
   justify-content: space-between;
  
 }
+
+body{
+  /* background: linear-gradient(to right ,#2e1065 ,#500724); */
+  background-color: #020817;
+}

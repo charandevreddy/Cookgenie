@@ -5,7 +5,6 @@ import Recipe from './food'
 import './App.css';
 
 
-
 const App = () => {
 
   const app_id = "158540c6";
@@ -55,8 +54,6 @@ const App = () => {
     { value: 'Mexcian', label: 'Mexican' },
   ];
   
-
-
   const [recipes, setrecipes] = useState([])
   const [search, setsearch] = useState('')
   const [submit,setsubmit] = useState('')
@@ -68,12 +65,6 @@ const App = () => {
   const [dishty,setdishty] = useState('')
   const [cuisine,setcuisine] = useState('')
   const [cuisinety,setcuisinety] = useState('')
-
-
-
-
-
-
 
   // const expreq = `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${app_id}&app_key=${app_key}&cuisineType=Indian&mealType=Lunch&dishType=Main%20course&imageSize=REGULAR`
   
@@ -134,8 +125,6 @@ const App = () => {
     }
   }
 
-
-
   const getsubmit = e =>{
     e.preventDefault(search)
     setsubmit(`${search}`)
@@ -147,42 +136,53 @@ const App = () => {
   }
 
   return (
-    <div className="h-s grid place-items-center bg-gradient-to-r from-violet-950 to-pink-950 text-white">
+    <div className="h-s grid place-items-center text-white">
 
       <div className="upbar" id='upbar'>
-        <h3 className="idfc" id='upbar'>IDG<span>AF:(</span></h3>      
+        <h3 className="idfc" id='upbar'>Cook<span className='bg-gradient-to-r from-indigo-500 to-cyan-400 bg-clip-text text-transparent'>Genie</span> - food recipe generator</h3>      
         <nav>
-            <ul>
-               <li><a href="#home">Home</a></li>
-               <li><a href="#about">About me</a></li>
-               <li><a href="#contact">Contact</a></li>
+            <ul className="nav_bar">
+               <li><a href="#home"><b>Home</b></a></li>
+               <li><a href="#about"><b>About me</b></a></li>
+               <li><a href="#contact"><b>Contact</b></a></li>
             </ul>
         </nav>
       </div>
 
-      <form className='my-2rem space-y-[1rem] shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-black' onSubmit={getsubmit}>
+      <div className='pro'>
+        <h1 className='title'>Eliminate mealtime uncertainties<br />with Cook<span className='bg-gradient-to-r from-indigo-500 to-cyan-400 bg-clip-text text-transparent'>Genie</span></h1>
+      </div>
+
+      <div className='mainform'>
+      <form  className='my-2rem space-y-[1rem] shadow-md rounded px-8 pt-6 pb-8 mb-4  text-white border-2 border-slate-500 rounded-xl' onSubmit={getsubmit}>
         <div>
-          <span>Search : </span><input className='dark:text-black rounded  py-2 px-3' type = "text" placeholder='search' value={search} onChange={research}/>
+          <span id='types'>Search : </span><br/><br/><input className='dark:text-black rounded  py-2 px-3' type = "text" placeholder='search' value={search} onChange={research}/>
         </div>
 
-        <div className='my-1rem'>
-          <span>Meal Type : </span><Select className='text-black' options={mealtypeoptions} onChange={mealtype} />
+        <div className='my-1rem' id='options'>
+          <span id='types'>Meal Type : </span><br/><br/><Select className='text-black' options={mealtypeoptions} onChange={mealtype} styles={{width:'36vw'}} />
         </div>
 
-        <div className='my-1rem'>
-          <span>Diet Type :</span><Select className='text-black' options={dietoptions} onChange={diettype}/>
+        <div className='my-1rem' id='options'>
+          <span id='types'>Diet Type :</span><br/><br/><Select className='text-black' options={dietoptions} onChange={diettype}/>
         </div>
 
-        <div className='my-1rem'>
-          <span>Dish Type : </span><Select className='text-black' options={dishtypeoptions} onChange={dishtype}/>
+        <div className='my-1rem' id='options'>
+          <span id='types'>Dish Type : </span><br/><br/><Select className='text-black' options={dishtypeoptions} onChange={dishtype}/>
         </div>
 
-        <div className='my-1rem'>
-          <span>Cuisine Type : </span><Select className='text-black' options={cuisinetypeoptions} onChange={cuisinetype}/>
-        </div>
+        <div className='my-1rem' id='options'>
+          <span id='types'>Cuisine Type : </span><br/><br/><Select className='text-black' options={cuisinetypeoptions} onChange={cuisinetype}/>
+        </div><br />
 
-        <button className='py-2 px-4 text-lg bg-teal-500 text-white rounded-lg font-medium ml-8' type='submit' >search</button>
+        <button className='py-2 px-4 text-lg bg-gradient-to-r from-indigo-500 to-cyan-400 text-white rounded-lg font-medium ml-8 ' type='submit' >
+          <b className='drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]' >Search </b>
+        </button>
       </form> 
+      </div>
+
+
+      <div className='output_recipe'>
       {recipes.map(recipe => (
         <Recipe 
         key = {recipe.recipe.calories} 
@@ -192,6 +192,8 @@ const App = () => {
         ingredients = {recipe.recipe.ingredients}
         />
       ))}
+      </div>
+      
       {/* <footer>Made with lust by <a href='https://charandevreddy.github.io/portfolio/'>Charan Dev Reddy</a></footer> */}
       
     </div>
